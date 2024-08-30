@@ -6,6 +6,10 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('home');
+        $id = session()->get('id');
+        $data = [
+            'title' => 'Dashboard'
+        ];
+        return view('home', $data);
     }
 }

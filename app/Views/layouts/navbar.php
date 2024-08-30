@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Dashboard</a>
+            <a href="/home" class="nav-link"></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link"></a>
@@ -15,11 +15,12 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-
-        <!-- Messages Dropdown Menu -->
-
-        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item">
+            <a class="nav-link bg-danger rounded" href="/login/keluar" role="button">
+                <i class="fas fa-sign-out-alt"></i>
+                Keluar
+            </a>
+        </li>
 
     </ul>
 </nav>
