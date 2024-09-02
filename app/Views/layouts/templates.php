@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.bootstrap5.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>/dist/css/adminlte.min.css">
 </head>
@@ -63,15 +71,48 @@
     <script src="<?= base_url('assets/'); ?>/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?= base_url('assets/'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE -->
-    <script src="<?= base_url('assets/'); ?>/dist/js/adminlte.js"></script>
 
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="<?= base_url('assets/'); ?>/plugins/chart.js/Chart.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="<?= base_url('assets/'); ?>/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="<?= base_url('assets/'); ?>/dist/js/pages/dashboard3.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/jszip/jszip.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap5.js"></script> -->
+    <!-- AdminLTE App -->
+    <script src="<?= base_url('assets/'); ?>/dist/js/adminlte.min.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+        // new DataTable('#example');
+    </script>
 </body>
 
 </html>

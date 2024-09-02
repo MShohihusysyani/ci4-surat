@@ -35,6 +35,9 @@ $routes->get('/', 'Login::index');
 $routes->post('/cekUser', 'Login::cekUser');
 
 $routes->get('/home', 'Home::index');
+
+//user
+$routes->get('/user', 'User::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -27,4 +27,12 @@ class LoginModel extends Model
 
         return $this->where(['id' => $id])->first();
     }
+
+    public function getUser()
+    {
+        return $this->db->table('user')
+            ->orderBy('role', 'ASC')
+            ->get()
+            ->getResult();
+    }
 }
