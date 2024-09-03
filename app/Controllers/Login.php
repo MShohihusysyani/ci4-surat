@@ -12,16 +12,15 @@ class Login extends BaseController
         $data['title'] = 'Login';
         return view('login/index', $data);
     }
-
     public function cekUser()
     {
-        // Ambil dari input
+        //Ambil dari input
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
         $validation = \Config\Services::validation();
 
-        // Rule validation
+        //Rule validation
         $valid = $this->validate([
             'username' => [
                 'label' => 'Username',
@@ -39,7 +38,7 @@ class Login extends BaseController
             ]
         ]);
 
-        // Penerapan validation
+        //Penerapan validation
         if (!$valid) {
             $sessError = [
                 'errUsername' => $validation->getError('username'),
@@ -51,17 +50,20 @@ class Login extends BaseController
         } else {
             $loginModel = new LoginModel();
 
-            // Cek user di db berdasarkan username
+            //Cek user di db berdasarkan username
             $db = $loginModel->where('username', $username)->first();
 
             if ($db == null) {
-                session()->setFlashdata('pesan', 'Maaf user tidak terdaftar');
+                $sessError = [
+                    'errUsername' => 'Maaf user tidak terdaftar'
+                ];
+                session()->setFlashdata($sessError);
                 return redirect()->to('/');
             } else {
-                // Ambil password dari db
+                //Ambil password dari db
                 $passwordUser = $db['password'];
 
-                // Bandingkan password langsung (tanpa password_verify)
+                //Bandingkan password langsung (tanpa password_verify)
                 if ($password == $passwordUser) {
                     // Jika password benar, lanjutkan proses login
                     $simpan_session = [
@@ -73,14 +75,16 @@ class Login extends BaseController
                     session()->set($simpan_session);
                     return redirect()->to('/home');
                 } else {
-                    // Set flashdata for error message
-                    session()->setFlashdata('alert', 'Username atau Password Anda Salah!');
+                    $sessError = [
+                        'errPassword' => 'Maaf password anda tidak sesuai'
+                    ];
+
+                    session()->setFlashdata($sessError);
                     return redirect()->to('/');
                 }
             }
         }
     }
-
 
 
     public function keluar()

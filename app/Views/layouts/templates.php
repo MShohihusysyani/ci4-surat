@@ -85,11 +85,6 @@
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <!-- js sweet alert -->
-    <script src="<?= base_url('assets/'); ?>/js/scripts.js"></script>
-    <script src="<?= base_url('assets/'); ?>/js/myscript.js"></script>
-    <script src="<?= base_url('assets/'); ?>/js/script.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
