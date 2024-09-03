@@ -23,6 +23,32 @@
             <div class="card-header text-center">
                 <a href="" class="h1">Aplikasi Surat</a>
             </div>
+            <div class="login" data-login="<?= session()->getFlashdata('pesan') ?>">
+                <?php if (session()->getFlashdata('pesan')) { ?>
+                    <!-- SweetAlert will handle this -->
+                <?php } ?>
+            </div>
+
+            <div class="eror" data-eror="<?= session()->getFlashdata('alert') ?>">
+                <?php if (session()->getFlashdata('alert')) { ?>
+                    <!-- SweetAlert will handle this -->
+                <?php } ?>
+            </div>
+
+            <!-- Display validation errors if any -->
+            <?php if (isset($validation)): ?>
+                <div class="validation-errors">
+                    <?= $validation->listErrors(); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Display a custom flash message if any -->
+            <?php if (session()->getFlashdata('message')): ?>
+                <div class="flash-message">
+                    <?= session()->getFlashdata('message'); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <center>
@@ -99,6 +125,11 @@
     <script src="<?= base_url('assets/'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/'); ?>/dist/js/adminlte.min.js"></script>
+
+    <!-- js sweet alert -->
+    <script src="<?= base_url('assets/'); ?>/js/scripts.js"></script>
+    <script src="<?= base_url('assets/'); ?>/js/myscript.js"></script>
+    <script src="<?= base_url('assets/'); ?>/js/script.js"></script>
 </body>
 
 </html>
