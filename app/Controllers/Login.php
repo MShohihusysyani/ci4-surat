@@ -29,6 +29,7 @@ class Login extends BaseController
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
+
             'password' => [
                 'label' => 'Password',
                 'rules' => 'required',
@@ -38,7 +39,7 @@ class Login extends BaseController
             ]
         ]);
 
-        //Penerapan validation
+        //penerapan validation
         if (!$valid) {
             $sessError = [
                 'errUsername' => $validation->getError('username'),
@@ -50,36 +51,34 @@ class Login extends BaseController
         } else {
             $loginModel = new LoginModel();
 
-            //Cek user di db berdasarkan username
-            $db = $loginModel->where('username', $username)->first();
+            //jika tidak ada user di db
+            $id = $loginModel->select('id')->where('username', $username);
 
-            if ($db == null) {
-                $sessError = [
-                    'errUsername' => 'Maaf user tidak terdaftar'
-                ];
-                session()->setFlashdata($sessError);
+            $cekUserLogin = $loginModel->find($id);
+            // dd($cekUserLogin);
+            if ($cekUserLogin == null) {
+                // dd($cekUserLogin);
+                session()->setFlashdata('alert', 'Maaf User tidak terdaftar');
                 return redirect()->to('/');
             } else {
-                //Ambil password dari db
+                // $passwordUser = $cekUserLogin['password'];
+                $db = $loginModel->where('username', $username)->first();
                 $passwordUser = $db['password'];
 
-                //Bandingkan password langsung (tanpa password_verify)
-                if ($password == $passwordUser) {
-                    // Jika password benar, lanjutkan proses login
+                //jika password benar
+                if (password_verify($password, $passwordUser)) {
+                    //LANJUTKAN
                     $simpan_session = [
                         'username' => $db['username'],
                         'role' => $db['role'],
                         'id' => $db['id'],
                     ];
-
+                    // dd($simpan_session);
                     session()->set($simpan_session);
+                    session()->setFlashdata('pesan', 'Anda Berhasil Login');
                     return redirect()->to('/home');
                 } else {
-                    $sessError = [
-                        'errPassword' => 'Maaf password anda tidak sesuai'
-                    ];
-
-                    session()->setFlashdata($sessError);
+                    session()->setFlashdata('alert', 'Username atau Password anda salah!');
                     return redirect()->to('/');
                 }
             }
@@ -89,6 +88,7 @@ class Login extends BaseController
 
     public function keluar()
     {
+        session()->setFlashdata('pesan', 'Berhasil Logout');
         session()->destroy();
         return redirect()->to('/');
     }

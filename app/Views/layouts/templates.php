@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.bootstrap5.css"> -->
     <!-- Theme style -->
@@ -85,6 +90,16 @@
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url('assets/'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+    <script src="<?= base_url('assets/'); ?>/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <!-- sweet alert2 -->
+    <script src="<?= base_url('assets/'); ?>/sweetalert2/package/dist/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>/js/script.js"></script>
+
+    <!-- Select2 -->
+    <script src="<?= base_url('assets/'); ?>/plugins/select2/js/select2.full.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
@@ -111,6 +126,14 @@
             });
         });
         // new DataTable('#example');
+    </script>
+
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+        //Initialize Select2 Elements
+        $('.select2').select2()
     </script>
 </body>
 

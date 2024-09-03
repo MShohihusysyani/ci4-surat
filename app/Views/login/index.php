@@ -1,3 +1,8 @@
+<style>
+    .login-box {
+        position: fixed;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +28,12 @@
             <div class="card-header text-center">
                 <a href="" class="h1">Aplikasi Surat</a>
             </div>
+            <?php if (session()->getFlashdata('alert')) { ?>
+                <div class="error" data-error="<?= session()->get('alert') ?>"></div>
+            <?php } ?>
+            <?php if (session()->getFlashdata('pesan')): ?>
+                <div><?= session()->getFlashdata('pesan'); ?></div>
+            <?php endif; ?>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <center>
@@ -32,55 +43,27 @@
                 <form action="/login/cekUser" method="post">
                     <?= csrf_field(); ?>
                     <div class="input-group mb-3">
-                        <?php
-                        if (session()->getFlashdata('errUsername')) {
-
-                            $isInvalidUsername = 'is-invalid';
-                        } else {
-                            $isInvalidUsername = '';
-                        }
-                        ?>
-                        <input type="text" name="username" class="form-control <?= $isInvalidUsername ?>" placeholder="Username">
+                        <input type="text" name="username" class="form-control " placeholder="Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        <?php
-                        if (session()->getFlashdata('errUsername')) {
-                            echo '<div id="validationServer03Feedback" class="invalid-feedback"> ' . session()->getFlashdata('errUsername') . '</div>';
-                        }
-                        ?>
                     </div>
                     <div class="input-group mb-3">
-                        <?php
-                        if (session()->getFlashdata('errPassword')) {
-
-                            $isInvalidPassword = 'is-invalid';
-                        } else {
-                            $isInvalidPassword = '';
-                        }
-                        ?>
-
-                        <input type="password" name="password" class="form-control <?= $isInvalidPassword ?>" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
 
-                        <?php
-                        if (session()->getFlashdata('errPassword')) {
-                            echo '<div id="validationServer03Feedback" class="invalid-feedback"> ' . session()->getFlashdata('errPassword') . '</div>';
-                        }
-                        ?>
-
                     </div>
                     <div class="row">
 
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block tombol-login">Login</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -99,6 +82,10 @@
     <script src="<?= base_url('assets/'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/'); ?>/dist/js/adminlte.min.js"></script>
+    <!-- sweet alert2 -->
+    <script src="<?= base_url('assets/'); ?>/sweetalert2/package/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>/sweetalert2/package/dist/sweetalert2.min.css">
+    <script src="<?= base_url('assets/'); ?>/js/script.js"></script>
 </body>
 
 </html>

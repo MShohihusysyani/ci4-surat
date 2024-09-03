@@ -33,6 +33,11 @@ class LoginModel extends Model
         return $this->db->table('user')
             ->orderBy('role', 'ASC')
             ->get()
-            ->getResult();
+            ->getResultArray();
+    }
+
+    public function getUserid($id)
+    {
+        return $this->db->table('user')->select('user.*')->where('id', $id)->get()->getResultArray();
     }
 }

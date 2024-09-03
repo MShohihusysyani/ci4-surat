@@ -21,7 +21,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    <div class="swalog" data-swalog="<?= session()->get('pesan') ?>"></div>
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">

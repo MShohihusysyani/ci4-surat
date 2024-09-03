@@ -16,7 +16,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link bg-danger rounded" href="/login/keluar" role="button">
+            <a class="nav-link bg-danger rounded tombol-logout" href="/login/keluar" role="button">
                 <i class="fas fa-sign-out-alt"></i>
                 Keluar
             </a>

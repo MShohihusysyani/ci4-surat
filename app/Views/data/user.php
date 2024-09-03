@@ -10,12 +10,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <?php if (session()->getFlashdata('pesan')) : ?>
+                    <!-- <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success">
                             <i class="icon fas fa-check"></i>
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
+                    <div class="swal" data-swal="<?= session()->get('pesan') ?>"></div>
                     <div class="card">
                         <div class="card-header">
                             <h2>Management Pengguna</h2>
@@ -34,7 +35,7 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
+                                <!-- <tfoot>
                                     <tr>
                                         <th>No</th>
                                         <th>Username</th>
@@ -42,30 +43,25 @@
                                         <th>Role</th>
                                         <th>Aksi</th>
                                     </tr>
-                                </tfoot>
+                                </tfoot> -->
 
                                 <tbody>
                                     <?php $no = 1; ?>
                                     <?php foreach ($users as $user) : ?>
                                         <tr>
-                                            <th><?= $no++; ?></th>
-                                            <th><?= $user['username']; ?></th>
-                                            <th><?= $user['nama_lengkap']; ?></th>
-                                            <th><?= $user['role']; ?></th>
-                                            <th><a href="/user/edit/<?= $user['id']; ?>" class="btn btn-info btn-sm">
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $user['username']; ?></td>
+                                            <td><?= $user['nama_lengkap']; ?></td>
+                                            <td><?= $user['role']; ?></td>
+                                            <td><a href="/user/edit/<?= $user['id']; ?>" class="btn btn-info btn-sm">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit
                                                 </a>
-                                                <form action="/user/<?= $user['id']; ?>" method="post" class="d-inline">
-                                                    <?= csrf_field(); ?>
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus data?');"> <i class="fas fa-trash">
-                                                        </i>
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </th>
+                                                <a href="/user/delete/<?= $user['id']; ?>" class="btn btn-danger btn-sm btn-hapus"> <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete</a>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

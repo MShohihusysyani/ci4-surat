@@ -38,6 +38,9 @@ $routes->get('/home', 'Home::index');
 
 //user
 $routes->get('/user', 'User::index');
+$routes->add('/user/tambah', 'User::create');
+$routes->add('/user/edit/(:segment)', 'User::edit/$1');
+$routes->delete('/user/(:num)', 'User::delete/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
